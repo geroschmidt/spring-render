@@ -1,5 +1,5 @@
 # Usa la imagen de Java 17
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17
 
 # Establece el directorio de trabajo en /app
 WORKDIR /usr/src/app
