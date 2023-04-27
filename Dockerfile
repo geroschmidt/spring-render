@@ -13,10 +13,10 @@ COPY gradle gradle
 RUN ./gradlew build
 
 # Copia el archivo .jar construido en la etapa anterior a /app
-COPY build/libs/spring-render-1.jar app.jar
+COPY build/libs/spring-render-1.jar ./app.jar
 
 # Expone el puerto 8080 en el contenedor
 EXPOSE 8080
 
 # Ejecuta la aplicación Spring Boot al iniciar el contenedor
-CMD ["java", "-jar", "spring-render-1.jar"]
+CMD ["java", "-jar", "app.jar"]
