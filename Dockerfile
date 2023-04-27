@@ -2,7 +2,7 @@
 FROM openjdk:17-jdk-alpine
 
 # Establece el directorio de trabajo en /app
-WORKDIR /spring-render
+WORKDIR /Users/geronimoschmidt/Desktop/spring-render
 
 # Copia el archivo build.gradle y los directorios src y gradle a /app
 COPY build.gradle .
