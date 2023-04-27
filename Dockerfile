@@ -2,7 +2,7 @@
 FROM openjdk:17-jdk-alpine
 
 # Establece el directorio de trabajo en /app
-WORKDIR /Users/geronimoschmidt/Desktop/spring-render
+WORKDIR /usr/src/app
 
 # Copia el archivo build.gradle y los directorios src y gradle a /app
 COPY build.gradle .
@@ -13,7 +13,7 @@ COPY gradle gradle
 RUN ./gradlew build
 
 # Copia el archivo .jar construido en la etapa anterior a /app
-COPY build/libs/spring-render.jar spring-render.jar
+COPY build/libs/spring-render-1.jar spring-render-1.jar
 
 # Expone el puerto 8080 en el contenedor
 EXPOSE 8080
