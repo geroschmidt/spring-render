@@ -10,7 +10,7 @@ COPY src src
 COPY gradle gradle
 
 # Ejecuta Gradle para construir la aplicación
-RUN ./gradlew build
+RUN ./gradlew bootJar --no-daemon
 
 # Copia el archivo .jar construido en la etapa anterior a /app
 COPY build/libs/spring-render-1.jar app.jar
