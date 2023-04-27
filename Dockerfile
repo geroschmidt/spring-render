@@ -1,22 +1,11 @@
-# Usa la imagen de Java 17
+FROM ubuntu:latest AS build
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
+RUN ./gradlew bootJar --no-daemon
+
 FROM openjdk:17
-
-# Establece el directorio de trabajo en /app
-WORKDIR /usr/src/app
-
-# Copia el archivo build.gradle y los directorios src y gradle a /app
-COPY build.gradle .
-COPY src src
-COPY gradle gradle
-
-# Ejecuta Gradle para construir la aplicación
-RUN ./gradlew build
-
-# Copia el archivo .jar construido en la etapa anterior a /app
-COPY build/libs/spring-render-1.jar ./app.jar
-
-# Expone el puerto 8080 en el contenedor
 EXPOSE 8080
+COPY ./build/libs/spring-render-1.jar app.jar
 
-# Ejecuta la aplicación Spring Boot al iniciar el contenedor
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
